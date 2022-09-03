@@ -14,3 +14,34 @@
 | BioDistilBERT-uncased | False | 6  | 65M |  nlpie/bio-distilbert-uncased | [here](https://huggingface.co/nlpie/bio-distilbert-uncased) |
 | BioTinyBERT           | False | 4  | 15M |  nlpie/bio-tinybert           | [here](https://huggingface.co/nlpie/bio-tinybert)           |
 | BioMobileBERT         | False | 24 | 25M |  nlpie/bio-mobilebert         | [here](https://huggingface.co/nlpie/bio-mobilebert)         |
+
+# How to prepare your coding environment
+
+First, install the below packages via the command below:
+
+```bash
+pip install transformers datasets seqeval evaluate
+```
+
+Second, clone this repository:
+
+```bash
+git clone https://github.com/nlpie-research/Compact-Biomedical-Transformers.git
+```
+
+Third, add the path of the cloned repository to your project via the below command so you can access the files in it:
+
+```python
+import sys
+sys.path.append("PATH_TO_REPO/Compact-Biomedical-Transformers")
+```
+
+Forth, download and extract the pre-processed datasets from the [BioBERT Github Repo](https://github.com/dmis-lab/biobert) via these commands:
+
+```bash
+wget http://nlp.dmis.korea.edu/projects/biobert-2020-checkpoints/datasets.tar.gz
+tar -xvzf datasets.tar.gz
+```
+
+# Run models on NER
+
