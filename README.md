@@ -45,3 +45,46 @@ tar -xvzf datasets.tar.gz
 
 # Run models on NER
 
+First, import the `load_and_preprocess_dataset` and `train_and_evaluate` functions form the ner.py like below:
+
+```python
+from ner import load_and_preprocess_dataset, train_and_evaluate
+```
+
+Then, specify the pre-trained model, dataset, path to dataset and logging file path like this:
+```python
+datasetName = "BC5CDR-chem"
+
+modelPath = "nlpie/distil-biobert"
+tokenizerPath = "nlpie/distil-biobert"
+
+datasetPath = f"PATH_TO_DOWNLOADED_DATASET/datasets/NER/{datasetName}/"
+logsPath = f"{datasetName}-logs.txt"
+```
+Next, load the pre-trained tokenizer from huggingface and call the load_and_preprocess_dataset function:
+```python
+import transformers as ts
+
+tokenizer = ts.AutoTokenizer.from_pretrained(tokenizerPath)
+
+tokenizedTrainDataset, tokenizedValDataset, tokenizedTestDataset, compute_metrics, label_names = load_and_preprocess_dataset(
+    datasetPath=datasetPath,
+    tokenizer=tokenizer
+)
+```
+Finally, call the train_and_evaluate function and wait for the results:
+```python
+model, valResults, testResults = train_and_evaluate(lr=5e-5,
+                                                    batchsize=16,
+                                                    epochs=5,
+                                                    tokenizer=tokenizer,
+                                                    tokenizedTrainDataset=tokenizedTrainDataset,
+                                                    tokenizedValDataset=tokenizedValDataset,
+                                                    tokenizedTestDataset=tokenizedTestDataset,
+                                                    compute_metrics=compute_metrics,
+                                                    label_names=label_names,
+                                                    logsPath=logsPath,
+                                                    trainingArgs=None)
+```
+
+Note that, you can either use our pre-defined TrainingArguments with your desired learning rate, batch size and number of epochs or use the `trainingArgs` argument (which by default is set to None) and pass your custom TrainingArguments to it.
