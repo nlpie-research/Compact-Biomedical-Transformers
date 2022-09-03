@@ -45,7 +45,7 @@ tar -xvzf datasets.tar.gz
 
 # Run models on NER
 
-First, import the `load_and_preprocess_dataset` and `train_and_evaluate` functions form the ner.py like below:
+First, import the `load_and_preprocess_dataset` and `train_and_evaluate` functions from the ner.py like below:
 
 ```python
 from ner import load_and_preprocess_dataset, train_and_evaluate
@@ -61,7 +61,7 @@ tokenizerPath = "nlpie/distil-biobert"
 datasetPath = f"PATH_TO_DOWNLOADED_DATASET/datasets/NER/{datasetName}/"
 logsPath = f"{datasetName}-logs.txt"
 ```
-Next, load the pre-trained tokenizer from huggingface and call the load_and_preprocess_dataset function:
+Next, load the pre-trained tokenizer from huggingface and call the `load_and_preprocess_dataset` function:
 ```python
 import transformers as ts
 
@@ -72,7 +72,7 @@ tokenizedTrainDataset, tokenizedValDataset, tokenizedTestDataset, compute_metric
     tokenizer=tokenizer
 )
 ```
-Finally, call the train_and_evaluate function and wait for the results:
+Finally, call the `train_and_evaluate` function and wait for the results:
 ```python
 model, valResults, testResults = train_and_evaluate(lr=5e-5,
                                                     batchsize=16,
