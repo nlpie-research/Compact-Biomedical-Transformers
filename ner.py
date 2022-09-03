@@ -148,6 +148,7 @@ def train_and_evaluate(lr,
                        tokenizedTestDataset,
                        compute_metrics,
                        label_names,
+                       logsPath=None,
                        trainingArgs=None):
     model = ts.AutoModelForTokenClassification.from_pretrained(
         modelPath, num_labels=len(label_names))
