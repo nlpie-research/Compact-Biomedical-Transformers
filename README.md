@@ -6,7 +6,7 @@
 
 # Available Models
 | Model Name  | isDistiiled | #Layers  | #Params | Huggingface Path | Link |
-| :------------ |:------------ | :------------: | :------------ | :------------: | :-----:|
+| :------------ |:------------ | :------------: | :------------: | :------------: | :-----:|
 | DistilBioBERT         | True  | 6  | 65M |  nlpie/distil-biobert         | [here](https://huggingface.co/nlpie/distil-biobert)         |
 | CompactBioBERT        | True  | 6  | 65M |  nlpie/compact-biobert        | [here](https://huggingface.co/nlpie/compact-biobert)        |
 | TinyBioBERT           | True  | 4  | 15M |  nlpie/tiny-biobert           | [here](https://huggingface.co/nlpie/tiny-biobert)           |
