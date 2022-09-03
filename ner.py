@@ -139,16 +139,16 @@ def load_and_preprocess_dataset(datasetPath, tokenizer):
 
     return tokenizedTrainDataset, tokenizedValDataset, tokenizedTestDataset, compute_metrics, label_names
 
-def trainAndEvaluate(lr,
-                     batchsize,
-                     epochs,
-                     tokenizer,
-                     tokenizedTrainDataset,
-                     tokenizedValDataset,
-                     tokenizedTestDataset,
-                     compute_metrics,
-                     label_names,
-                     trainingArgs=None):
+def train_and_evaluate(lr,
+                       batchsize,
+                       epochs,
+                       tokenizer,
+                       tokenizedTrainDataset,
+                       tokenizedValDataset,
+                       tokenizedTestDataset,
+                       compute_metrics,
+                       label_names,
+                       trainingArgs=None):
     model = ts.AutoModelForTokenClassification.from_pretrained(
         modelPath, num_labels=len(label_names))
     data_collator = DataCollatorForTokenClassification(tokenizer)
