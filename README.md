@@ -169,7 +169,7 @@ Afterwards use the following code for evalutation:
 java -Xmx10G -cp $CLASSPATH:/FULL_PATH_TO_CLONED_REPO/Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 /FULL_PATH_TO_DOWNLOADED_DATASET/datasets/QA/BioASQ/7B_golden.json /FULL_PATH_TO_LOGS_FOLDER/qa_logs/prediction_7B_golden.json
 ```
 
-Finally, you will get a result like below, in which the second to forth numbers are Strict Accuracy, Lenient Accuracy, and Mean Reciprocal Rank scores respectively.
+Finally, you will get a result like below, in which the second to forth numbers are `Strict Accuracy`, `Lenient Accuracy`, and `Mean Reciprocal Rank` scores respectively.
 
 ```bash
 1.0 0.2345679012345679 0.36419753086419754 0.28524397413286307 1.0 1.0 1.0 1.0 1.0 1.0
