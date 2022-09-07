@@ -88,3 +88,83 @@ model, valResults, testResults = train_and_evaluate(lr=5e-5,
 ```
 
 Note that, you can either use our pre-defined TrainingArguments with your desired learning rate, batch size and number of epochs or use the `trainingArgs` argument (which by default is set to None) and pass your custom TrainingArguments to it.
+
+# Run Models on QA
+
+First import the `load_and_preprocess_train_dataset`, `load_test_dataset`, `train`, and `evaluate` from the qa.py along with the following libraries:
+
+```python
+import transformers as ts
+
+import torch
+import torch.nn as nn
+from torch.functional import F
+
+from qa import load_and_preprocess_train_dataset, load_test_dataset, train, evaluate
+```
+
+Then, Specify the model, tokenizer, dataset, and etc. as shown below:
+
+```python
+modelPath = "nlpie/bio-distilbert-cased"
+tokenizerPath = "nlpie/bio-distilbert-cased"
+
+trainPath = "PATH_TO_DOWNLOADED_DATASET/datasets/QA/BioASQ/BioASQ-train-factoid-7b.json"
+testPath = "PATH_TO_DOWNLOADED_DATASET/datasets/QA/BioASQ/BioASQ-test-factoid-7b.json"
+goldenPath = "PATH_TO_DOWNLOADED_DATASET/datasets/QA/BioASQ/7B_golden.json"
+
+logsPath = "qa_logs/"
+```
+
+Next, load the tokenizer and the train and test datasets as shown below:
+
+```python
+tokenizer = ts.AutoTokenizer.from_pretrained(tokenizerPath)
+
+trainDataset, tokenizedTrainDataset = load_and_preprocess_train_dataset(trainPath, 
+                                                                        tokenizer,
+                                                                        max_length=384, 
+                                                                        stride=128)
+                                                                        
+testDataset = load_test_dataset(testPath)
+```
+
+Afterwards, train the model using the code below:
+
+```python
+model = train(tokenizedTrainDataset,
+              modelPath,
+              tokenizer,
+              learning_rate=3e-5,
+              num_epochs=5,
+              batch_size=16,
+              training_args=None)
+```
+Please note that you can either use our pre-defined `TrainingArguments` or pass your own `TrainingArguments` to the `training_args` argument.
+
+Finally, use the below code for making predictions on the test dataset and saving it into a json file in the correct format expected by the evalutaion script used in BioASQ competition.
+
+```python
+answersDict = evaluate(model,
+                       tokenizer,
+                       testDataset,
+                       goldenPath,
+                       logsPath,
+                       top_k_predictions=5,
+                       max_seq_len=384,
+                       doc_stride=128)
+```
+
+### Evalutation using BioASQ evaluation script
+
+First clone the BioASQ repository with the code below:
+
+```bash
+git clone https://github.com/BioASQ/Evaluation-Measures.git
+```
+
+Afterwards use the following code for evalutation:
+
+```bash
+java -Xmx10G -cp $CLASSPATH:/FULL_PATH_TO_CLONED_REPO/Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 /FULL_PATH_TO_DOWNLOADED_DATASET/datasets/QA/BioASQ/7B_golden.json /FULL_PATH_TO_LOGS_FOLDER/qa_logs/prediction_7B_golden.json
+```
