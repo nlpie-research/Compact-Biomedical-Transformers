@@ -17,7 +17,7 @@
 
 # How to prepare your coding environment
 
-First, install the below packages via the command below:
+First, install the below packages using the following command:
 
 ```bash
 pip install transformers datasets seqeval evaluate
@@ -29,7 +29,7 @@ Second, clone this repository:
 git clone https://github.com/nlpie-research/Compact-Biomedical-Transformers.git
 ```
 
-Third, add the path of the cloned repository to your project via the below command so you can access the files in it:
+Third, add the path of the cloned repository to your project using the below command so you can access the files in it:
 
 ```python
 import sys
@@ -45,7 +45,7 @@ tar -xvzf datasets.tar.gz
 
 # Run models on NER
 
-First, import the `load_and_preprocess_dataset` and `train_and_evaluate` functions from the ner.py like below:
+First, import the `load_and_preprocess_dataset` and `train_and_evaluate` functions from the ner.py:
 
 ```python
 from ner import load_and_preprocess_dataset, train_and_evaluate
@@ -61,7 +61,7 @@ tokenizerPath = "nlpie/distil-biobert"
 datasetPath = f"PATH_TO_DOWNLOADED_DATASET/datasets/NER/{datasetName}/"
 logsPath = f"{datasetName}-logs.txt"
 ```
-Next, load the pre-trained tokenizer from huggingface and call the `load_and_preprocess_dataset` function:
+Next, load the pre-trained tokeniser from huggingface and call the `load_and_preprocess_dataset` function:
 ```python
 import transformers as ts
 
@@ -103,7 +103,7 @@ from torch.functional import F
 from qa import load_and_preprocess_train_dataset, load_test_dataset, train, evaluate
 ```
 
-Then, Specify the model, tokenizer, dataset, and etc. as shown below:
+Then, Specify the model, tokeniser, dataset etc, as shown below:
 
 ```python
 modelPath = "nlpie/bio-distilbert-cased"
@@ -116,7 +116,7 @@ goldenPath = "PATH_TO_DOWNLOADED_DATASET/datasets/QA/BioASQ/7B_golden.json"
 logsPath = "qa_logs/"
 ```
 
-Next, load the tokenizer and the train and test datasets as shown below:
+Next, load the tokeniser and the train and test datasets:
 
 ```python
 tokenizer = ts.AutoTokenizer.from_pretrained(tokenizerPath)
@@ -142,7 +142,7 @@ model = train(tokenizedTrainDataset,
 ```
 Please note that you can either use our pre-defined `TrainingArguments` or pass your own `TrainingArguments` to the `training_args` argument.
 
-Finally, use the below code for making predictions on the test dataset and saving it into a json file in the correct format expected by the evalutaion script used in BioASQ competition.
+Finally, use the below code for making predictions on the test dataset and saving it into a json file in the correct format expected by the evalutaion script used in the BioASQ competition.
 
 ```python
 answersDict = evaluate(model,
@@ -155,15 +155,15 @@ answersDict = evaluate(model,
                        doc_stride=128)
 ```
 
-### Evalutation using BioASQ evaluation script
+### Evaluation using BioASQ evaluation script
 
-First clone the BioASQ repository with the code below:
+First, clone the BioASQ repository with the code below:
 
 ```bash
 git clone https://github.com/BioASQ/Evaluation-Measures.git
 ```
 
-Afterwards use the following code for evalutation:
+Afterwards, use the following code for evaluation:
 
 ```bash
 java -Xmx10G -cp $CLASSPATH:/FULL_PATH_TO_CLONED_REPO/Evaluation-Measures/flat/BioASQEvaluation/dist/BioASQEvaluation.jar evaluation.EvaluatorTask1b -phaseB -e 5 /FULL_PATH_TO_DOWNLOADED_DATASET/datasets/QA/BioASQ/7B_golden.json /FULL_PATH_TO_LOGS_FOLDER/qa_logs/prediction_7B_golden.json
