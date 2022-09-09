@@ -174,3 +174,17 @@ Finally, you will get a result like below, in which the second to forth numbers 
 ```bash
 1.0 0.2345679012345679 0.36419753086419754 0.28524397413286307 1.0 1.0 1.0 1.0 1.0 1.0
 ```
+
+# Citation
+```bibtex
+@misc{https://doi.org/10.48550/arxiv.2209.03182,
+  doi = {10.48550/ARXIV.2209.03182},
+  url = {https://arxiv.org/abs/2209.03182},
+  author = {Rohanian, Omid and Nouriborji, Mohammadmahdi and Kouchaki, Samaneh and Clifton, David A.},
+  keywords = {Computation and Language (cs.CL), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences, 68T50},
+  title = {On the Effectiveness of Compact Biomedical Transformers},
+  publisher = {arXiv},
+  year = {2022}, 
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
