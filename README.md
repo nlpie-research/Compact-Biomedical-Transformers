@@ -1,4 +1,8 @@
 # Compact Biomedical Transformers
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/on-the-effectiveness-of-compact-biomedical/named-entity-recognition-on-bc5cdr-chemical)](https://paperswithcode.com/sota/named-entity-recognition-on-bc5cdr-chemical?p=on-the-effectiveness-of-compact-biomedical)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/on-the-effectiveness-of-compact-biomedical/named-entity-recognition-on-bc5cdr-disease)](https://paperswithcode.com/sota/named-entity-recognition-on-bc5cdr-disease?p=on-the-effectiveness-of-compact-biomedical)
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/on-the-effectiveness-of-compact-biomedical/named-entity-recognition-ner-on-ncbi-disease)](https://paperswithcode.com/sota/named-entity-recognition-ner-on-ncbi-disease?p=on-the-effectiveness-of-compact-biomedical)
+
 <p align="justify"> This repository contains the code used for distillation and fine-tuning of compact biomedical transformers that have been introduced in the paper "On The Effectiveness of Compact Biomedical Transformers". </p>
 
 # Abstract of the Research
