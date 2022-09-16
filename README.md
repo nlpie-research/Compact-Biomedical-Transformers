@@ -49,7 +49,7 @@ wget http://nlp.dmis.korea.edu/projects/biobert-2020-checkpoints/datasets.tar.gz
 tar -xvzf datasets.tar.gz
 ```
 
-# Run models on NER
+# Run Models on NER
 
 First, import the `load_and_preprocess_dataset` and `train_and_evaluate` functions from the ner.py:
 
